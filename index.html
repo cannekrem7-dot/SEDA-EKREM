@@ -1,86 +1,488 @@
-<div class="card letter">
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <p>Bazı hikâyeler beklediğin anda başlamaz...</p>
+<title>Ekrem ❤️ Seda</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #09030a;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* ARKA PLAN */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 50, 100, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(180, 20, 80, 0.18), transparent 30%),
+        linear-gradient(135deg, #09030a, #250814, #09030a);
+    z-index: -2;
+}
+
+/* YÜZEN KALPLER */
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    color: rgba(255, 100, 140, 0.35);
+    font-size: 20px;
+    animation: floatUp linear infinite;
+}
+
+.heart:nth-child(1) {
+    left: 10%;
+    animation-duration: 9s;
+}
+
+.heart:nth-child(2) {
+    left: 30%;
+    animation-duration: 12s;
+}
+
+.heart:nth-child(3) {
+    left: 55%;
+    animation-duration: 10s;
+}
+
+.heart:nth-child(4) {
+    left: 75%;
+    animation-duration: 14s;
+}
+
+.heart:nth-child(5) {
+    left: 90%;
+    animation-duration: 11s;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* GİRİŞ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.big-heart {
+    font-size: 80px;
+    animation: beat 1.5s infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 50, 100, 0.6));
+}
+
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.hero h1 {
+    font-size: clamp(45px, 12vw, 85px);
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 25px rgba(255, 80, 120, 0.5);
+}
+
+.hero p {
+    margin-top: 15px;
+    font-size: 20px;
+    opacity: 0.85;
+}
+
+.enter-button {
+    margin-top: 35px;
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.enter-button:hover {
+    background: rgba(255, 70, 110, 0.35);
+    transform: scale(1.05);
+}
+
+/* BÖLÜMLER */
+section {
+    padding: 90px 20px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 25px;
+    padding: 35px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* HİKAYE */
+.story {
+    text-align: center;
+    line-height: 2;
+    font-size: 19px;
+}
+
+.story p {
+    margin-bottom: 22px;
+}
+
+.highlight {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* GALERİ */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.photo-placeholder {
+    height: 280px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px dashed rgba(255,255,255,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: rgba(255,255,255,0.7);
+}
+
+/* MEKTUP */
+.letter {
+    line-height: 2;
+    font-size: 19px;
+}
+
+.letter p {
+    margin-bottom: 20px;
+}
+
+/* MÜZİK */
+.music {
+    text-align: center;
+}
+
+.music-icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+audio {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* ALT */
+footer {
+    text-align: center;
+    padding: 70px 20px;
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.signature {
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+/* MOBİL */
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    section {
+        padding: 70px 15px;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    .story,
+    .letter {
+        font-size: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- YÜZEN KALPLER -->
+<div class="hearts">
+    <div class="heart">❤️</div>
+    <div class="heart">♡</div>
+    <div class="heart">❤️</div>
+    <div class="heart">♡</div>
+    <div class="heart">❤️</div>
+</div>
+
+
+<!-- GİRİŞ -->
+<div class="hero">
+
+    <div class="big-heart">❤️</div>
+
+    <h1>Ekrem & Seda</h1>
 
     <p>
-        Bazen iki insan, birbirinin hayatına tam da en çok ihtiyaç duyduğu anda girer.
+        Bizim hikâyemiz...
     </p>
 
-    <p>
-        Bizim hikâyemiz de böyle başladı. ❤️
-    </p>
-
-    <p>
-        <strong>10 Eylül 2026...</strong>
-    </p>
-
-    <p>
-        O günden sonra kalbim sadece senin için atmaya başladı.
-    </p>
-
-    <p>
-        <strong>Sen benim en güzel yanım.</strong>
-    </p>
-
-    <p>
-        <strong>Sen benim yeryüzündeki cennetimsin.</strong>
-    </p>
-
-    <p>
-        Seni çok seviyorum. ❤️
-    </p>
-
-    <p>
-        Bu site, sana olan sevgimin küçük bir hatırası.
-    </p>
-
-    <p>
-        Burada fotoğraflarımız,<br>
-        bizim şarkımız,<br>
-        sana yazdığım mektuplar,<br>
-        birlikte yaşadığımız güzel anlar<br>
-        ve yıllar geçse bile unutmak istemediğim küçük detaylar olacak.
-    </p>
-
-    <p>
-        Belki bir gün, yıllar sonra bu siteyi tekrar açacağız.
-    </p>
-
-    <p>
-        Fotoğraflara bakacağız.<br>
-        Şarkımızı dinleyeceğiz.
-    </p>
-
-    <p>
-        Ve birbirimize bakıp diyeceğiz ki:
-    </p>
-
-    <p>
-        <em>“İyi ki o gün birbirimizi bulmuşuz.”</em> ❤️
-    </p>
-
-    <p>
-        Ve sen muhtemelen yine bana bakıp:
-    </p>
-
-    <p>
-        <strong>“Yoğğğ Efendimmm.” 😂❤️</strong>
-    </p>
-
-    <p>
-        diyeceksin.
-    </p>
-
-    <p>
-        Çünkü bizim hikâyemiz daha yeni başladı...
-    </p>
-
-    <p>
-        <strong>Ekrem ❤️ Seda</strong>
-    </p>
-
-    <p>
-        <strong>10.09.2026 — Başlangıç</strong>
-    </p>
+    <button class="enter-button"
+        onclick="document.getElementById('hikaye').scrollIntoView()">
+        Hikâyemize Gir ❤️
+    </button>
 
 </div>
+
+
+<!-- HİKAYEMİZ -->
+<section id="hikaye">
+
+    <h2 class="section-title">
+        ❤️ Bizim Hikâyemiz
+    </h2>
+
+    <div class="card story">
+
+        <p>
+            Bazı hikâyeler beklediğin anda başlamaz...
+        </p>
+
+        <p>
+            Bazen iki insan, birbirinin hayatına tam da en çok
+            ihtiyaç duyduğu anda girer.
+        </p>
+
+        <p>
+            Bizim hikâyemiz de böyle başladı. ❤️
+        </p>
+
+        <p class="highlight">
+            10 Eylül 2026...
+        </p>
+
+        <p>
+            O günden sonra kalbim sadece senin için atmaya başladı.
+        </p>
+
+        <p class="highlight">
+            Sen benim en güzel yanım.
+        </p>
+
+        <p class="highlight">
+            Sen benim yeryüzündeki cennetimsin.
+        </p>
+
+        <p>
+            Seni çok seviyorum. ❤️
+        </p>
+
+        <p>
+            Ve sen muhtemelen yine bana bakıp:
+        </p>
+
+        <p class="highlight">
+            “Yoğğğ Efendimmm.” 😂❤️
+        </p>
+
+        <p>
+            diyeceksin.
+        </p>
+
+        <p>
+            Çünkü bizim hikâyemiz daha yeni başladı...
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOTOĞRAFLAR -->
+<section>
+
+    <h2 class="section-title">
+        📸 Anılarımız
+    </h2>
+
+    <div class="gallery">
+
+        <div class="photo-placeholder">
+            📷<br><br>
+            Buraya ilk fotoğrafımız gelecek
+        </div>
+
+        <div class="photo-placeholder">
+            📷<br><br>
+            Buraya ikinci fotoğrafımız gelecek
+        </div>
+
+        <div class="photo-placeholder">
+            📷<br><br>
+            Buraya üçüncü fotoğrafımız gelecek
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MEKTUP -->
+<section>
+
+    <h2 class="section-title">
+        💌 Sana Mektubum
+    </h2>
+
+    <div class="card letter">
+
+        <p>
+            Sevgilim Seda,
+        </p>
+
+        <p>
+            Bazen sana olan sevgimi anlatmak için kelimeler
+            yetmiyor.
+        </p>
+
+        <p>
+            Ama bilmeni istediğim bir şey var:
+            hayatımda olduğun için çok mutluyum.
+        </p>
+
+        <p>
+            Sen benim en güzel hikâyemsin.
+        </p>
+
+        <p>
+            Seni çok seviyorum. ❤️
+        </p>
+
+        <p>
+            — Ekrem
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ŞARKIMIZ -->
+<section>
+
+    <h2 class="section-title">
+        🎵 Bizim Şarkımız
+    </h2>
+
+    <div class="card music">
+
+        <div class="music-icon">
+            🎶❤️🎶
+        </div>
+
+        <p>
+            Bu şarkı sadece bizim...
+        </p>
+
+        <br>
+
+        <audio controls>
+            <source src="sarkimiz.mp3" type="audio/mpeg">
+            Tarayıcınız müzik oynatmayı desteklemiyor.
+        </audio>
+
+    </div>
+
+</section>
+
+
+<!-- SON -->
+<footer>
+
+    <p>
+        Bazı hikâyeler anlatılmaz...
+    </p>
+
+    <p>
+        Yaşanır. ❤️
+    </p>
+
+    <div class="signature">
+        Ekrem ❤️ Seda
+    </div>
+
+    <p>
+        10.09.2026 — Başlangıç
+    </p>
+
+</footer>
+
+</body>
+</html>
