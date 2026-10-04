@@ -7,482 +7,697 @@
 <title>Ekrem ❤️ Seda</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #09030a;
-    color: #fff;
-    overflow-x: hidden;
-}
-
-/* ARKA PLAN */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+body{
+    font-family:Arial, sans-serif;
     background:
-        radial-gradient(circle at 20% 20%, rgba(255, 50, 100, 0.18), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(180, 20, 80, 0.18), transparent 30%),
-        linear-gradient(135deg, #09030a, #250814, #09030a);
-    z-index: -2;
+    radial-gradient(circle at top,#40152d,#160817 45%,#080309);
+    color:white;
+    overflow-x:hidden;
 }
 
-/* YÜZEN KALPLER */
-.hearts {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: -1;
+body.locked{
+    overflow:hidden;
 }
 
-.heart {
-    position: absolute;
-    bottom: -50px;
-    color: rgba(255, 100, 140, 0.35);
-    font-size: 20px;
-    animation: floatUp linear infinite;
+/* GİRİŞ EKRANI */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    background:
+    radial-gradient(circle at center,#5a173d,#170916 60%,#070208);
+
+    transition:1s ease;
 }
 
-.heart:nth-child(1) {
-    left: 10%;
-    animation-duration: 9s;
+.intro-content{
+    padding:30px;
 }
 
-.heart:nth-child(2) {
-    left: 30%;
-    animation-duration: 12s;
+.big-heart{
+    font-size:70px;
+    animation:heartbeat 1.5s infinite;
 }
 
-.heart:nth-child(3) {
-    left: 55%;
-    animation-duration: 10s;
+.intro-content h1{
+    font-size:42px;
+    margin:20px 0 10px;
 }
 
-.heart:nth-child(4) {
-    left: 75%;
-    animation-duration: 14s;
+.intro-content p{
+    color:#ffd5e8;
+    font-size:18px;
+    margin-bottom:30px;
 }
 
-.heart:nth-child(5) {
-    left: 90%;
-    animation-duration: 11s;
+.start-btn{
+    border:none;
+    padding:16px 32px;
+    border-radius:40px;
+    background:linear-gradient(135deg,#ff4f91,#ff1f68);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 35px rgba(255,45,120,.4);
 }
 
-@keyframes floatUp {
-    from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    to {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
-    }
+.start-btn:active{
+    transform:scale(.95);
 }
 
-/* GİRİŞ */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 30px;
+/* ANA SAYFA */
+
+.container{
+    width:min(900px,92%);
+    margin:auto;
 }
 
-.big-heart {
-    font-size: 80px;
-    animation: beat 1.5s infinite;
-    filter: drop-shadow(0 0 20px rgba(255, 50, 100, 0.6));
+.hero{
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 }
 
-@keyframes beat {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.15);
-    }
+.hero .heart{
+    font-size:65px;
+    animation:heartbeat 1.5s infinite;
 }
 
-.hero h1 {
-    font-size: clamp(45px, 12vw, 85px);
-    margin-top: 20px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 25px rgba(255, 80, 120, 0.5);
+.hero h1{
+    font-size:50px;
+    margin:15px 0;
 }
 
-.hero p {
-    margin-top: 15px;
-    font-size: 20px;
-    opacity: 0.85;
+.hero p{
+    font-size:20px;
+    color:#ffd4e7;
 }
 
-.enter-button {
-    margin-top: 35px;
-    padding: 15px 35px;
-    border-radius: 50px;
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.1);
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
+.button{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 25px;
+    border-radius:30px;
+    background:#ff3f83;
+    color:white;
+    text-decoration:none;
 }
 
-.enter-button:hover {
-    background: rgba(255, 70, 110, 0.35);
-    transform: scale(1.05);
+section{
+    padding:70px 0;
 }
 
-/* BÖLÜMLER */
-section {
-    padding: 90px 20px;
-    max-width: 950px;
-    margin: auto;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 38px;
-    margin-bottom: 40px;
-}
-
-.card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 25px;
-    padding: 35px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+.section-title{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:30px;
 }
 
 /* HİKAYE */
-.story {
-    text-align: center;
-    line-height: 2;
-    font-size: 19px;
+
+.story{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:25px;
+    padding:30px;
+    line-height:1.8;
+    text-align:center;
 }
 
-.story p {
-    margin-bottom: 22px;
+.story .quote{
+    font-size:22px;
+    color:#ff9fc5;
+    margin:20px 0;
 }
 
-.highlight {
-    font-size: 24px;
-    font-weight: bold;
+/* FOTOĞRAFLAR */
+
+.photos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
 }
 
-/* GALERİ */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
+.photo{
+    height:280px;
+    border-radius:22px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#d9b9c9;
+    overflow:hidden;
 }
 
-.photo-placeholder {
-    height: 280px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.06);
-    border: 1px dashed rgba(255,255,255,0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    color: rgba(255,255,255,0.7);
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 /* MEKTUP */
-.letter {
-    line-height: 2;
-    font-size: 19px;
-}
 
-.letter p {
-    margin-bottom: 20px;
+.letter{
+    background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+    border-radius:25px;
+    padding:35px;
+    line-height:2;
+    font-size:17px;
 }
 
 /* MÜZİK */
-.music {
-    text-align: center;
+
+.music-box{
+    text-align:center;
+    background:rgba(255,255,255,.05);
+    padding:30px;
+    border-radius:25px;
 }
 
-.music-icon {
-    font-size: 55px;
-    margin-bottom: 20px;
+audio{
+    width:100%;
+    margin-top:20px;
 }
 
-audio {
-    width: 100%;
-    max-width: 500px;
+/* DOĞUM GÜNÜ */
+
+.birthday{
+    text-align:center;
 }
 
-/* ALT */
-footer {
-    text-align: center;
-    padding: 70px 20px;
-    font-size: 18px;
-    opacity: 0.8;
+.countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:30px;
 }
 
-.signature {
-    font-size: 28px;
-    margin-top: 20px;
+.time-box{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:18px;
+    padding:20px 8px;
 }
 
-/* MOBİL */
-@media (max-width: 600px) {
+.time-box strong{
+    display:block;
+    font-size:30px;
+    color:#ff77aa;
+}
 
-    .hero h1 {
-        font-size: 48px;
+.time-box span{
+    font-size:12px;
+    color:#e7cbd8;
+}
+
+.birthday-message{
+    display:none;
+    margin-top:30px;
+    font-size:28px;
+    color:#ff9fc5;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:50px 20px;
+    color:#caaabb;
+}
+
+/* KALPLER */
+
+.floating-heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:20px;
+    animation:floatUp 7s linear infinite;
+    opacity:.5;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0);
+        opacity:0;
     }
 
-    section {
-        padding: 70px 15px;
+    20%{
+        opacity:.6;
     }
 
-    .card {
-        padding: 25px 20px;
-    }
-
-    .story,
-    .letter {
-        font-size: 17px;
+    to{
+        transform:translateY(-110vh) rotate(20deg);
+        opacity:0;
     }
 }
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+}
+
+@media(max-width:600px){
+
+    .intro-content h1{
+        font-size:34px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .countdown{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
 </style>
 </head>
 
-<body>
-
-<!-- YÜZEN KALPLER -->
-<div class="hearts">
-    <div class="heart">❤️</div>
-    <div class="heart">♡</div>
-    <div class="heart">❤️</div>
-    <div class="heart">♡</div>
-    <div class="heart">❤️</div>
-</div>
-
+<body class="locked">
 
 <!-- GİRİŞ -->
-<div class="hero">
 
-    <div class="big-heart">❤️</div>
+<div id="intro">
 
-    <h1>Ekrem & Seda</h1>
+    <div class="intro-content">
 
-    <p>
-        Bizim hikâyemiz...
-    </p>
+        <div class="big-heart">❤️</div>
 
-    <button class="enter-button"
-        onclick="document.getElementById('hikaye').scrollIntoView()">
-        Hikâyemize Gir ❤️
-    </button>
+        <h1>Ekrem & Seda</h1>
+
+        <p>
+            Sana küçük bir sürpriz hazırladım...<br>
+            Hazırsan başlayalım.
+        </p>
+
+        <button class="start-btn" onclick="startLove()">
+            Sürprize Dokun ❤️
+        </button>
+
+    </div>
 
 </div>
 
 
-<!-- HİKAYEMİZ -->
-<section id="hikaye">
+<!-- ANA SAYFA -->
 
-    <h2 class="section-title">
-        ❤️ Bizim Hikâyemiz
-    </h2>
+<div class="container">
 
-    <div class="card story">
+    <div class="hero">
 
-        <p>
-            Bazı hikâyeler beklediğin anda başlamaz...
-        </p>
+        <div class="heart">❤️</div>
 
-        <p>
-            Bazen iki insan, birbirinin hayatına tam da en çok
-            ihtiyaç duyduğu anda girer.
-        </p>
+        <h1>Ekrem & Seda</h1>
 
-        <p>
-            Bizim hikâyemiz de böyle başladı. ❤️
-        </p>
+        <p>Bizim hikâyemiz...</p>
 
-        <p class="highlight">
-            10 Eylül 2026...
-        </p>
-
-        <p>
-            O günden sonra kalbim sadece senin için atmaya başladı.
-        </p>
-
-        <p class="highlight">
-            Sen benim en güzel yanım.
-        </p>
-
-        <p class="highlight">
-            Sen benim yeryüzündeki cennetimsin.
-        </p>
-
-        <p>
-            Seni çok seviyorum. ❤️
-        </p>
-
-        <p>
-            Ve sen muhtemelen yine bana bakıp:
-        </p>
-
-        <p class="highlight">
-            “Yoğğğ Efendimmm.” 😂❤️
-        </p>
-
-        <p>
-            diyeceksin.
-        </p>
-
-        <p>
-            Çünkü bizim hikâyemiz daha yeni başladı...
-        </p>
+        <a href="#story" class="button">
+            Hikâyemize Gir ❤️
+        </a>
 
     </div>
 
-</section>
 
+    <!-- HİKAYE -->
 
-<!-- FOTOĞRAFLAR -->
-<section>
+    <section id="story">
 
-    <h2 class="section-title">
-        📸 Anılarımız
-    </h2>
+        <h2 class="section-title">
+            Bizim Hikâyemiz
+        </h2>
 
-    <div class="gallery">
+        <div class="story">
 
-        <div class="photo-placeholder">
-            📷<br><br>
-            Buraya ilk fotoğrafımız gelecek
+            <p>
+                Bazı hikâyeler beklediğin anda başlamaz...
+            </p>
+
+            <p>
+                Bazen iki insan, birbirinin hayatına tam da
+                en çok ihtiyaç duyduğu anda girer.
+            </p>
+
+            <p>
+                Bizim hikâyemiz de böyle başladı. ❤️
+            </p>
+
+            <p>
+                <strong>10 Eylül 2026...</strong>
+            </p>
+
+            <p>
+                O günden sonra kalbim sadece senin için atmaya başladı.
+            </p>
+
+            <div class="quote">
+                Sen benim en güzel yanım.<br>
+                Sen benim yeryüzündeki cennetimsin.
+            </div>
+
+            <p>
+                Seni çok seviyorum. ❤️
+            </p>
+
+            <p>
+                Ve sen muhtemelen yine bana bakıp:
+            </p>
+
+            <div class="quote">
+                “Yoğğğ Efendimmm.” 😂❤️
+            </div>
+
+            <p>
+                diyeceksin.
+            </p>
+
+            <p>
+                Çünkü bizim hikâyemiz daha yeni başladı...
+            </p>
+
         </div>
 
-        <div class="photo-placeholder">
-            📷<br><br>
-            Buraya ikinci fotoğrafımız gelecek
+    </section>
+
+
+    <!-- FOTOĞRAFLAR -->
+
+    <section>
+
+        <h2 class="section-title">
+            Biz ❤️
+        </h2>
+
+        <div class="photos">
+
+            <div class="photo">
+                Buraya ilk fotoğrafımız gelecek ❤️
+            </div>
+
+            <div class="photo">
+                Buraya ikinci fotoğrafımız gelecek ❤️
+            </div>
+
+            <div class="photo">
+                Buraya üçüncü fotoğrafımız gelecek ❤️
+            </div>
+
         </div>
 
-        <div class="photo-placeholder">
-            📷<br><br>
-            Buraya üçüncü fotoğrafımız gelecek
+    </section>
+
+
+    <!-- DOĞUM GÜNÜ -->
+
+    <section class="birthday">
+
+        <h2 class="section-title">
+            🎂 Seda'nın Doğum Gününe
+        </h2>
+
+        <p>
+            Dünyadaki en güzel insanın doğduğu güne...
+        </p>
+
+        <div class="countdown">
+
+            <div class="time-box">
+                <strong id="days">00</strong>
+                <span>GÜN</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="hours">00</strong>
+                <span>SAAT</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="minutes">00</strong>
+                <span>DAKİKA</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="seconds">00</strong>
+                <span>SANİYE</span>
+            </div>
+
         </div>
 
-    </div>
+        <div id="birthdayMessage" class="birthday-message">
 
-</section>
+            🎂 İYİ Kİ DOĞDUN SEDA! ❤️<br>
 
+            <span style="font-size:18px;">
+                İyi ki hayatıma girdin.<br>
+                Seni çok seviyorum. ❤️
+            </span>
 
-<!-- MEKTUP -->
-<section>
-
-    <h2 class="section-title">
-        💌 Sana Mektubum
-    </h2>
-
-    <div class="card letter">
-
-        <p>
-            Sevgilim Seda,
-        </p>
-
-        <p>
-            Bazen sana olan sevgimi anlatmak için kelimeler
-            yetmiyor.
-        </p>
-
-        <p>
-            Ama bilmeni istediğim bir şey var:
-            hayatımda olduğun için çok mutluyum.
-        </p>
-
-        <p>
-            Sen benim en güzel hikâyemsin.
-        </p>
-
-        <p>
-            Seni çok seviyorum. ❤️
-        </p>
-
-        <p>
-            — Ekrem
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ŞARKIMIZ -->
-<section>
-
-    <h2 class="section-title">
-        🎵 Bizim Şarkımız
-    </h2>
-
-    <div class="card music">
-
-        <div class="music-icon">
-            🎶❤️🎶
         </div>
 
-        <p>
-            Bu şarkı sadece bizim...
-        </p>
-
-        <br>
-
-        <audio controls>
-            <source src="sarkimiz.mp3" type="audio/mpeg">
-            Tarayıcınız müzik oynatmayı desteklemiyor.
-        </audio>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- SON -->
+    <!-- MEKTUP -->
+
+    <section>
+
+        <h2 class="section-title">
+            Sana Bir Mektup 💌
+        </h2>
+
+        <div class="letter">
+
+            <p>Sevgilim Seda,</p>
+
+            <p>
+                Bazen sana olan sevgimi anlatmak için
+                kelimeler yetmiyor.
+            </p>
+
+            <p>
+                Ama bilmeni istediğim bir şey var:
+                hayatımda olduğun için çok mutluyum.
+            </p>
+
+            <p>
+                Sen benim en güzel hikâyemsin.
+            </p>
+
+            <p>
+                Seni çok seviyorum. ❤️
+            </p>
+
+            <p>
+                — Ekrem
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MÜZİK -->
+
+    <section>
+
+        <h2 class="section-title">
+            Bizim Şarkımız 🎵
+        </h2>
+
+        <div class="music-box">
+
+            <p>
+                Bu şarkı sadece bizim... ❤️
+            </p>
+
+            <audio id="loveMusic" controls>
+
+                <source src="sarkimiz.mp3" type="audio/mpeg">
+
+                Tarayıcınız müzik oynatmayı desteklemiyor.
+
+            </audio>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
 <footer>
 
-    <p>
-        Bazı hikâyeler anlatılmaz...
-    </p>
+    Bazı hikâyeler anlatılmaz...<br>
+    Yaşanır. ❤️
 
-    <p>
-        Yaşanır. ❤️
-    </p>
+    <br><br>
 
-    <div class="signature">
-        Ekrem ❤️ Seda
-    </div>
+    Ekrem ❤️ Seda
 
-    <p>
-        10.09.2026 — Başlangıç
-    </p>
+    <br>
+
+    10.09.2026 — Başlangıç
 
 </footer>
+
+
+<script>
+
+/* SÜRPRİZ BUTONU */
+
+function startLove(){
+
+    const intro = document.getElementById("intro");
+    const music = document.getElementById("loveMusic");
+
+    intro.style.opacity = "0";
+
+    document.body.classList.remove("locked");
+
+    setTimeout(function(){
+
+        intro.style.display = "none";
+
+    },1000);
+
+
+    /*
+       Kullanıcı butona bastığı için tarayıcı
+       müziğin başlamasına izin verir.
+    */
+
+    music.play().catch(function(){
+
+        console.log("Müzik başlatılamadı.");
+
+    });
+
+}
+
+
+/* DOĞUM GÜNÜ SAYACI */
+
+function updateCountdown(){
+
+    const birthday =
+        new Date("2026-10-31T00:00:00+03:00");
+
+    const now = new Date();
+
+    const difference = birthday - now;
+
+
+    if(difference <= 0){
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        document.getElementById("birthdayMessage").style.display = "block";
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    const hours =
+        Math.floor(
+            (difference / (1000 * 60 * 60)) % 24
+        );
+
+    const minutes =
+        Math.floor(
+            (difference / (1000 * 60)) % 60
+        );
+
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
+
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2,"0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* UÇAN KALPLER */
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    heart.textContent = "❤️";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    heart.style.fontSize =
+        (14 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(function(){
+
+        heart.remove();
+
+    },10000);
+
+}
+
+
+setInterval(createHeart,900);
+
+</script>
 
 </body>
 </html>
