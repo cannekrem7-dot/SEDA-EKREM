@@ -402,11 +402,299 @@ section{
 
     margin-top:30px;
 
-    font-size:28px;
+    font-size:32px;
 
     color:#ff9fc5;
 
+    line-height:1.7;
+
+    text-shadow:
+    0 0 20px rgba(255,80,150,.5);
+
+    animation:
+    birthdayGlow 2s ease-in-out infinite;
+}
+
+.birthday-message span{
+    display:block;
+
+    font-size:21px;
+
+    color:#fff;
+
+    margin-top:10px;
+}
+
+
+/* =========================
+   DOĞUM GÜNÜ ÖZEL EKRANI
+========================= */
+
+#birthdayCelebration{
+    position:fixed;
+
+    inset:0;
+
+    z-index:9998;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(100,20,70,.96),
+        rgba(15,3,18,.98) 70%
+    );
+
+    overflow:hidden;
+
+    pointer-events:none;
+}
+
+.celebration-content{
+    position:relative;
+
+    z-index:3;
+
+    animation:
+    celebrationAppear 1.2s ease;
+}
+
+.celebration-cake{
+    font-size:70px;
+
+    margin-bottom:15px;
+
+    animation:
+    cakeBounce 1.5s ease-in-out infinite;
+}
+
+.celebration-content h1{
+    font-size:48px;
+
+    color:#fff;
+
+    margin-bottom:18px;
+
+    text-shadow:
+    0 0 15px rgba(255,100,180,.9),
+    0 0 35px rgba(255,70,160,.7);
+
+    animation:
+    birthdayGlow 2s ease-in-out infinite;
+}
+
+.celebration-content p{
+    font-size:25px;
+
+    color:#ffd5e8;
+
     line-height:1.6;
+}
+
+.celebration-heart{
+    font-size:38px;
+
+    margin-top:20px;
+
+    animation:
+    heartbeat 1s infinite;
+}
+
+
+/* =========================
+   KONFETİ
+========================= */
+
+.confetti{
+    position:fixed;
+
+    top:-20px;
+
+    width:10px;
+    height:18px;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    animation:
+    confettiFall linear forwards;
+}
+
+@keyframes confettiFall{
+
+    0%{
+        transform:
+        translateY(-30px)
+        rotate(0deg);
+
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   DOĞUM GÜNÜ KALPLERİ
+========================= */
+
+.birthday-heart{
+    position:fixed;
+
+    bottom:-50px;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    animation:
+    birthdayHeartFloat linear forwards;
+}
+
+@keyframes birthdayHeartFloat{
+
+    0%{
+        transform:
+        translateY(0)
+        scale(.7)
+        rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateY(-115vh)
+        scale(1.3)
+        rotate(25deg);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   PARILTI
+========================= */
+
+.sparkle{
+    position:fixed;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:white;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    box-shadow:
+    0 0 12px #fff,
+    0 0 25px #ff9ccc;
+
+    animation:
+    sparkleMove 2.5s ease-out forwards;
+}
+
+@keyframes sparkleMove{
+
+    0%{
+        transform:scale(0);
+
+        opacity:0;
+    }
+
+    30%{
+        transform:scale(1.5);
+
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translate(
+            var(--moveX),
+            var(--moveY)
+        )
+        scale(0);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   DOĞUM GÜNÜ ANİMASYONLARI
+========================= */
+
+@keyframes birthdayGlow{
+
+    0%,100%{
+        transform:scale(1);
+
+        text-shadow:
+        0 0 15px rgba(255,100,180,.5);
+    }
+
+    50%{
+        transform:scale(1.04);
+
+        text-shadow:
+        0 0 25px rgba(255,100,180,1),
+        0 0 50px rgba(255,70,160,.8);
+    }
+
+}
+
+@keyframes celebrationAppear{
+
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+@keyframes cakeBounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
 }
 
 
@@ -539,6 +827,22 @@ footer{
         height:330px;
     }
 
+    .celebration-content h1{
+        font-size:36px;
+    }
+
+    .celebration-content p{
+        font-size:21px;
+    }
+
+    .celebration-cake{
+        font-size:60px;
+    }
+
+    .birthday-message{
+        font-size:27px;
+    }
+
 }
 
 </style>
@@ -576,6 +880,36 @@ footer{
             Sürprize Dokun ❤️
 
         </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     DOĞUM GÜNÜ ÖZEL EKRANI
+========================= -->
+
+<div id="birthdayCelebration">
+
+    <div class="celebration-content">
+
+        <div class="celebration-cake">
+            🎂
+        </div>
+
+        <h1>
+            İYİ Kİ DOĞDUN SEDA!
+        </h1>
+
+        <p>
+            İyi ki doğdun en güzel yanımm ❤️
+        </p>
+
+        <div class="celebration-heart">
+            ❤️
+        </div>
 
     </div>
 
@@ -825,13 +1159,9 @@ footer{
 
             🎂 İYİ Kİ DOĞDUN SEDA! ❤️
 
-            <br>
+            <span>
 
-            <span style="font-size:18px;">
-
-                İyi ki hayatıma girdin.<br>
-
-                Seni çok seviyorum. ❤️
+                İyi ki doğdun en güzel yanımm ❤️
 
             </span>
 
@@ -1025,6 +1355,8 @@ function startLove(){
    DOĞUM GÜNÜ SAYACI
 ========================= */
 
+let birthdayStarted = false;
+
 function updateCountdown(){
 
     const birthday =
@@ -1061,6 +1393,15 @@ function updateCountdown(){
         document.getElementById(
             "birthdayMessage"
         ).style.display = "block";
+
+
+        if(!birthdayStarted){
+
+            birthdayStarted = true;
+
+            startBirthdayCelebration();
+
+        }
 
 
         return;
@@ -1127,6 +1468,265 @@ setInterval(
     updateCountdown,
     1000
 );
+
+
+
+/* =========================
+   DOĞUM GÜNÜ KUTLAMASI
+========================= */
+
+function startBirthdayCelebration(){
+
+    const celebration =
+        document.getElementById(
+            "birthdayCelebration"
+        );
+
+
+    celebration.style.display =
+        "flex";
+
+
+    /*
+       İlk büyük konfeti patlaması
+    */
+
+    for(let i = 0; i < 120; i++){
+
+        setTimeout(
+            createConfetti,
+            i * 18
+        );
+
+    }
+
+
+    /*
+       Kalpler
+    */
+
+    for(let i = 0; i < 35; i++){
+
+        setTimeout(
+            createBirthdayHeart,
+            i * 120
+        );
+
+    }
+
+
+    /*
+       Parıltılar
+    */
+
+    for(let i = 0; i < 45; i++){
+
+        setTimeout(
+            createSparkle,
+            i * 90
+        );
+
+    }
+
+
+    /*
+       Kutlamayı canlı tut
+    */
+
+    setInterval(
+        createConfetti,
+        350
+    );
+
+    setInterval(
+        createBirthdayHeart,
+        700
+    );
+
+    setInterval(
+        createSparkle,
+        500
+    );
+
+}
+
+
+
+/* =========================
+   KONFETİ OLUŞTUR
+========================= */
+
+function createConfetti(){
+
+    const confetti =
+        document.createElement("div");
+
+
+    confetti.className =
+        "confetti";
+
+
+    const colors = [
+        "#ff4f91",
+        "#ffcc00",
+        "#6ee7ff",
+        "#b76cff",
+        "#ffffff",
+        "#ff6b6b"
+    ];
+
+
+    confetti.style.background =
+        colors[
+            Math.floor(
+                Math.random() *
+                colors.length
+            )
+        ];
+
+
+    confetti.style.left =
+        Math.random() * 100 + "vw";
+
+
+    confetti.style.width =
+        (6 + Math.random() * 7) + "px";
+
+
+    confetti.style.height =
+        (10 + Math.random() * 14) + "px";
+
+
+    confetti.style.animationDuration =
+        (3 + Math.random() * 4) + "s";
+
+
+    confetti.style.transform =
+        "rotate(" +
+        Math.random() * 360 +
+        "deg)";
+
+
+    document.body.appendChild(
+        confetti
+    );
+
+
+    setTimeout(function(){
+
+        confetti.remove();
+
+    },8000);
+
+}
+
+
+
+/* =========================
+   DOĞUM GÜNÜ KALBİ OLUŞTUR
+========================= */
+
+function createBirthdayHeart(){
+
+    const heart =
+        document.createElement("div");
+
+
+    heart.className =
+        "birthday-heart";
+
+
+    const hearts = [
+        "❤️",
+        "💖",
+        "💕",
+        "💗",
+        "💓"
+    ];
+
+
+    heart.textContent =
+        hearts[
+            Math.floor(
+                Math.random() *
+                hearts.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+        (18 + Math.random() * 30) + "px";
+
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(function(){
+
+        heart.remove();
+
+    },9000);
+
+}
+
+
+
+/* =========================
+   PARILTI OLUŞTUR
+========================= */
+
+function createSparkle(){
+
+    const sparkle =
+        document.createElement("div");
+
+
+    sparkle.className =
+        "sparkle";
+
+
+    sparkle.style.left =
+        Math.random() * 100 + "vw";
+
+
+    sparkle.style.top =
+        Math.random() * 100 + "vh";
+
+
+    sparkle.style.setProperty(
+        "--moveX",
+        (Math.random() * 100 - 50) + "px"
+    );
+
+
+    sparkle.style.setProperty(
+        "--moveY",
+        (Math.random() * 100 - 50) + "px"
+    );
+
+
+    document.body.appendChild(
+        sparkle
+    );
+
+
+    setTimeout(function(){
+
+        sparkle.remove();
+
+    },3000);
+
+}
 
 
 
